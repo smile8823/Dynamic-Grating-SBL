@@ -843,73 +843,45 @@ def build_local_dictionaries():
 ## Project Structure
 
 ```
-DG-SBL Framework
-├── .claude/
-│   ├── CLAUDE.md
-│   ├── setting.json
-│   └── settings.local.json
-├── data/
-│   ├── test_data_20250821_204154.npz
-│   ├── test_data_20250821_204154_config.json
-│   └── test_data_20250821_204154_visualization.png
-├── output/
-│   ├── stage1_results_YYYYMMDD_HHMMSS/
-│   │   ├── reconstructed_waveforms.npz    # Reconstructed waveforms (format matches original)
-│   │   └── dictionary.npz                 # Dictionary matrix (for subsequent stages)
-│   ├── stage2_results_YYYYMMDD_HHMMSS/
-│   │   ├── reconstructed_waveforms.npz    # Reconstructed waveforms (format matches original)
-│   │   └── wavelength_offsets.csv         # Wavelength offsets (final algorithm result)
-│   └── stage3_results_YYYYMMDD_HHMMSS/
-│       ├── reconstructed_waveforms.npz    # Multi-signal reconstructed waveforms
-│       ├── FBG1_wavelength_offsets.csv     # Signal 1 wavelength offsets
-│       ├── FBG2_wavelength_offsets.csv     # Signal 2 wavelength offsets
-│       └── FBG3_wavelength_offsets.csv     # Signal 3 wavelength offsets
-├── src/
-│   ├── __pycache__/
-│   │   ├── dictionary_learning.cpython-313.pyc
-│   │   ├── sparse_bayesian_learning.cpython-313.pyc
-│   │   ├── stage1_main.cpython-313.pyc
-│   │   └── stage3_main.cpython-313.pyc
-│   ├── dictionary_learning.py
-│   ├── sparse_bayesian_learning.py
-│   ├── stage1_main.py
-│   ├── stage2_main.py
-│   ├── stage3_main.py
-│   ├── waveform_reconstruction.py
-│   ├── direction_prediction.py
-│   ├── peak_detection.py
-│   ├── signal_tracker.py
-│   ├── signal_separation.py
-│   ├── atom_set_manager.py
-│   └── intelligent_search.py
-├── tests/
-│   ├── README.md
-│   ├── quick_test.py
-│   ├── quick_test_algorithms.py
-│   ├── signal_imitation_generator.py
-│   ├── test_algorithms.py
-│   └── test_complete_implementation.py
-├── venv/
-├── docs/
-├── stage1.md
+d:\Dynamic-Grating-SBL\
+├── src\
+│   ├── config\          # Configuration files (JSON)
+│   ├── core\            # Core algorithm implementations
+│   │   ├── stage1_main.py           # Stage 1: Dictionary Learning & Global Param Estimation
+│   │   ├── optimized_stage2_main.py # Stage 2: Online Tracking (SBL)
+│   │   ├── ultra_fast_stage3.py     # Stage 3: High-speed Tracking
+│   │   └── optimized_pytorch_sbl.py # PyTorch implementation of SBL
+│   ├── modules\         # Helper modules and components
+│   │   ├── data_reader.py           # Data ingestion
+│   │   ├── dictionary_learning.py   # Dictionary learning logic
+│   │   ├── direction_prediction.py  # Drift prediction
+│   │   ├── peak_detection.py        # Peak finding
+│   │   ├── signal_separation.py     # Signal separation logic
+│   │   ├── signal_tracker.py        # Tracking logic
+│   │   ├── waveform_reconstruction.py # Waveform reconstruction
+│   │   ├── atom_set_manager.py      # Atom set management
+│   │   ├── intelligent_search.py    # Search space optimization
+│   │   └── memory_manager.py        # Memory management
+│   ├── main.py          # Main entry point
+│   ├── main_with_args.py# Entry point with command line arguments
+│   └── verify_waveforms.py
+├── scripts\             # Utility scripts and visualizations
+│   ├── integration_test.py
+│   ├── stage1_single_peak_reconstruct.py
+│   ├── two_stage_visualization.py
+│   └── three_stage_visualization.py
+├── tests\               # Unit and integration tests
+├── data\                # Input data directory
+├── output\              # Output results directory
+├── .gitignore
+├── LICENSE
+├── README.md
 └── requirements.txt
 ```
 
-*   `src/`: Core algorithm implementation
-    *   `stage1_main.py`: Stage 1, Offline Training and Global Parameter Estimation
-    *   `stage2_main.py`: Stage 2, Covariance-Free SBL Algorithm
-    *   `stage3_main.py`: Stage 3, Direction Prediction Guided Multi-Signal Intelligent Tracking System
-    *   `waveform_reconstruction.py`: Simplified waveform reconstruction module
-    *   `direction_prediction.py`: Direction prediction engine
-    *   `peak_detection.py`: Peak detection system
-    *   `signal_tracker.py`: Independent signal tracker
-    *   `signal_separation.py`: Signal separation engine
-    *   `atom_set_manager.py`: Atom set manager
-    *   `intelligent_search.py`: Intelligent search controller
-*   `output/`: Algorithm result output directory (simplified)
-    *   **Core Results:** Wavelength offsets (CSV format) and reconstructed waveform data (NPZ format)
-    *   **Data Format:** Reconstructed waveforms consistent with original data structure (wavelengths, Y_reconstructed, Y_original)
-    *   **File Simplification:** Save only necessary results, remove redundant metadata files
-    *   **Correct Location:** All algorithm results moved from `data/` to `output/`
-*   `tests/`: Test files
-*   `data/`: Save only test data and visualization results
+*   **src/core/**: Contains the main logic for each stage of the algorithm.
+*   **src/modules/**: Modularized components reused across different stages.
+*   **src/config/**: JSON configuration files for different run scenarios.
+*   **scripts/**: Scripts for visualization and specific testing scenarios.
+*   **output/**: Stores simulation results, reconstructed waveforms, and logs.
+
