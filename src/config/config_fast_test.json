@@ -1,0 +1,51 @@
+{
+    "data": {
+        "data_file": "10s_1.csv",
+        "training_frames": 10,
+        "test_frames": 20,
+        "start_frame": 100,
+        "signal_dimension": 4101
+    },
+    "stage1": {
+        "dictionary_size": 128,
+        "sparsity_level": 2,
+        "max_iterations": 5
+    },
+    "stage2": {
+        "max_sbl_iterations": 10,
+        "sbl_tolerance": 1e-3,
+        "epsilon": 1e-8
+    },
+    "stage3": {
+        "signals": {
+            "FBG1": {
+                "wavelength_range": [1527, 1537],
+                "expected_peak_count": 1
+            },
+            "FBG2": {
+                "wavelength_range": [1540, 1550],
+                "expected_peak_count": 1
+            },
+            "FBG3": {
+                "wavelength_range": [1553, 1563],
+                "expected_peak_count": 1
+            }
+        },
+        "quality_threshold": 0.5,
+        "confidence_threshold": 0.4,
+        "enable_signal_separation": true,
+        "min_signal_distance": 0.5,
+        "enable_parallel_processing": true,
+        "output_format": "json"
+    },
+    "output": {
+        "save_results": true,
+        "save_wavelength_offsets": true,
+        "save_reconstructed_waveforms": false,
+        "create_plots": false,
+        "export_format": "json",
+        "plot_format": "png",
+        "verbose": true,
+        "save_intermediate": false
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "data": {
+        "data_file": "10s_1.csv",
+        "training_frames": 100,
+        "test_frames": 200,
+        "start_frame": 200,
+        "signal_dimension": 4101
+    },
+    "stage1": {
+        "dictionary_size": 1024,
+        "sparsity_level": 5,
+        "max_iterations": 30
+    },
+    "stage2": {
+        "max_sbl_iterations": 50,
+        "sbl_tolerance": 1e-5,
+        "epsilon": 1e-10
+    },
+    "stage3": {
+        "signals": {
+            "FBG1": {
+                "wavelength_range": [1527, 1537],
+                "expected_peak_count": 1
+            },
+            "FBG2": {
+                "wavelength_range": [1540, 1550],
+                "expected_peak_count": 1
+            },
+            "FBG3": {
+                "wavelength_range": [1553, 1563],
+                "expected_peak_count": 1
+            }
+        },
+        "quality_threshold": 0.85,
+        "confidence_threshold": 0.7,
+        "enable_signal_separation": true,
+        "min_signal_distance": 0.3,
+        "enable_parallel_processing": true,
+        "output_format": "json"
+    },
+    "peak_detection": {
+        "method": "gaussian",
+        "prominence_factor": 0.05,
+        "min_peak_height": 0.005,
+        "min_peak_distance": 15,
+        "fit_tolerance": 1e-5,
+        "max_fit_iterations": 150
+    },
+    "direction_prediction": {
+        "prediction_method": "linear",
+        "history_window": 8,
+        "prediction_confidence": 0.9,
+        "update_strategy": "adaptive",
+        "max_prediction_error": 0.05
+    },
+    "output": {
+        "save_results": true,
+        "save_wavelength_offsets": true,
+        "save_reconstructed_waveforms": true,
+        "create_plots": true,
+        "export_format": "both",
+        "plot_format": "png",
+        "verbose": true,
+        "save_intermediate": true
+    }
+}

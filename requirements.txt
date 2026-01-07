@@ -1,0 +1,14 @@
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.4.0
+torch>=1.10.0
+
+# GPU Acceleration (Optional)
+# Uncomment the line corresponding to your CUDA version
+# cupy-cuda12x>=12.0.0  # For CUDA 12.x
+# cupy-cuda11x>=11.0.0  # For CUDA 11.x
+# cupy-cuda10x>=10.0.0  # For CUDA 10.x
+
+# Advanced GPU Linear Algebra (Optional)
+# cusolver>=0.1.0
+# cublas>=0.1.0
